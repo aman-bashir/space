@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aman Bashir — Senior React Native & Next.js Engineer</title>
+<meta name="description" content="Aman Bashir — Senior React Native & Next.js Engineer specializing in Three.js / WebGL 3D web experiences. Berlin/Hamburg, EU Blue Card eligible.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23DA7756%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 text-anchor=%22middle%22 fill=%22%23FAF6F1%22 font-family=%22Georgia,serif%22>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6F1;
+    --cream-2:#F3ECE3;
+    --ink:#2B2521;
+    --ink-soft:#5C534B;
+    --accent:#DA7756;
+    --accent-dark:#C05F3C;
+    --line:#E7DDD0;
+    --radius:18px;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,241,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .logo{
+    font-family:'Fraunces',Georgia,serif;
+    font-size:19px;font-weight:600;
+    text-decoration:none;
+    display:flex;align-items:center;gap:10px;
+  }
+  .logo .mark{
+    width:30px;height:30px;border-radius:9px;
+    background:var(--accent);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:600;
+  }
+  .navlinks{display:flex;gap:28px;font-size:14.5px;}
+  .navlinks a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .navlinks a:hover{color:var(--accent-dark);}
+
+  header.hero{padding:96px 0 72px;}
+  .eyebrow{
+    display:inline-block;font-size:13px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--accent-dark);
+    background:var(--cream-2);border:1px solid var(--line);
+    padding:6px 14px;border-radius:999px;margin-bottom:26px;
+  }
+  h1.name{font-size:clamp(38px,6vw,58px);line-height:1.08;}
+  .headline{
+    font-size:clamp(17px,2.2vw,20px);color:var(--ink-soft);
+    max-width:640px;margin-top:20px;
+  }
+  .meta-row{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 16px;
+    font-size:14px;color:var(--ink-soft);
+  }
+  .meta-row span{display:inline-flex;align-items:center;gap:6px;}
+  .cta-row{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{
+    display:inline-block;text-decoration:none;
+    padding:13px 26px;border-radius:12px;
+    font-size:14.5px;font-weight:500;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);}
+  .btn-secondary{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent-dark);}
+
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .section-head{margin-bottom:36px;}
+  .kicker{
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent-dark);font-weight:600;margin-bottom:10px;display:block;
+  }
+  h2.section-title{font-size:clamp(26px,3.4vw,32px);}
+
+  .about-text p{max-width:680px;color:var(--ink-soft);font-size:16.5px;margin:0 0 18px;}
+  .stack-line{
+    margin-top:26px;padding-top:22px;border-top:1px dashed var(--line);
+    font-size:14.5px;color:var(--ink-soft);
+  }
+  .stack-line b{color:var(--ink);font-weight:600;}
+
+  .job{
+    display:grid;grid-template-columns:180px 1fr;gap:24px;
+    padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .job:last-child{border-bottom:none;}
+  .job-date{color:var(--ink-soft);font-size:13.5px;padding-top:4px;}
+  .job-title{font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:500;}
+  .job-org{color:var(--accent-dark);font-size:14.5px;margin-top:4px;font-weight:500;}
+  .job-desc{color:var(--ink-soft);font-size:15px;margin-top:12px;max-width:600px;}
+  .job-desc ul{margin:0;padding-left:18px;}
+  .job-desc li{margin-bottom:6px;}
+
+  .pill-group{display:flex;flex-wrap:wrap;gap:10px;}
+  .pill{
+    background:var(--cream-2);border:1px solid var(--line);
+    padding:9px 16px;border-radius:999px;font-size:14px;color:var(--ink);
+  }
+  .pill.accent{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px;}
+  .skills-cols h3{font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:600;margin-bottom:14px;font-family:'Inter',sans-serif;}
+
+  .edu-card{
+    background:var(--cream-2);border:1px solid var(--line);
+    border-radius:var(--radius);padding:28px 30px;
+  }
+  .edu-title{font-family:'Fraunces',Georgia,serif;font-size:19px;}
+  .edu-sub{color:var(--accent-dark);font-size:14.5px;margin-top:4px;font-weight:500;}
+  .edu-date{color:var(--ink-soft);font-size:13.5px;margin-top:2px;}
+  .edu-desc{color:var(--ink-soft);font-size:15px;margin-top:14px;max-width:640px;}
+
+  .contact-card{
+    background:var(--ink);color:var(--cream);
+    border-radius:24px;padding:56px 44px;text-align:center;
+  }
+  .contact-card h2{color:var(--cream);}
+  .contact-card p{color:#D9D0C5;font-size:16px;max-width:480px;margin:14px auto 30px;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .contact-links .btn-primary{background:var(--accent);}
+  .contact-links .btn-secondary{border-color:#4A423B;color:var(--cream);}
+  .contact-links .btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+  footer{padding:32px 0 48px;text-align:center;color:var(--ink-soft);font-size:13.5px;}
+
+  @media (max-width:640px){
+    .navlinks{display:none;}
+    .job{grid-template-columns:1fr;gap:6px;}
+    .skills-cols{grid-template-columns:1fr;}
+    .contact-card{padding:40px 24px;border-radius:18px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><span class="mark">A</span>Aman Bashir</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Open to work · Berlin &amp; Hamburg</span>
+    <h1 class="name">Aman Bashir</h1>
+    <p class="headline">Senior React Native &amp; Next.js Engineer — specializing in Three.js / WebGL 3D web experiences. EU Blue Card eligible.</p>
+    <div class="meta-row">
+      <span>📍 Berlin Metropolitan Area</span>
+      <span>·</span>
+      <span>8+ years experience</span>
+      <span>·</span>
+      <span>On-site · Hybrid · Remote</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:amanbashir601@gmail.com">Get in touch</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/bashiraman/" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">About</span>
+      <h2 class="section-title">Building products at the edge of frontend and 3D</h2>
+    </div>
+    <div class="about-text">
+      <p>Senior software engineer with 8+ years building React Native apps and Next.js platforms shipped for clients including DCT Abu Dhabi (UAE government) and international startups across MENA. Specialist in 3D web experiences — Three.js, WebGL, PixiJS — a combination very few engineers bring to a product team.</p>
+      <p>On the backend, extensive experience with Laravel and MySQL: RESTful APIs, admin dashboards, reporting tools, and background processing systems. Comfortable leading small engineering teams and delivering independently without supervision in fast-moving product environments.</p>
+      <p>Actively relocating to Berlin or Hamburg — open to Senior Frontend, React Native, or Full-Stack roles at product companies in either city.</p>
+    </div>
+    <div class="stack-line">
+      <b>Core stack —</b> React Native · Next.js · TypeScript · Three.js · WebGL · Node.js · Laravel · Docker · AWS · Azure
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Experience</span>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Oct 2021 — Present</div>
+      <div>
+        <div class="job-title">Software Engineer</div>
+        <div class="job-org">Technyx Systems · Karachi, Pakistan (on-site)</div>
+        <div class="job-desc">
+          <ul>
+            <li>Led development of 10+ production React Native and Next.js applications across healthcare, fintech, and content platforms, managing a team of 5 engineers.</li>
+            <li>Built Foode, a food discovery and social platform, and Opsis, an AI-powered nutrition app for athletes with Bluetooth device integration and AI-driven macro analysis — both delivered for Eike Consultancy.</li>
+            <li>Built a 3D interactive world map of Abu Dhabi for DCT (Department of Culture &amp; Tourism, UAE government) using Three.js and React Three Fiber, with custom camera controls, panning, dolly effects, and animated model loading. Also delivered the DCT mobile app and website.</li>
+            <li>Developed a particle-system proof of concept with React Three Fiber — 3D models dissolving into particle meshes on scroll via noise effects and reforming into new objects.</li>
+            <li>Worked full-stack: React Native (Expo), Next.js, TypeScript, Node.js, Three.js, WebGL, AWS, Azure, Docker.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Aug 2020 — Sep 2021</div>
+      <div>
+        <div class="job-title">Mobile Developer</div>
+        <div class="job-org">Technyx Systems</div>
+        <div class="job-desc">
+          <ul>
+            <li>Shipped production React Native applications across healthcare, fintech, and content verticals.</li>
+            <li>Key delivery: Mofaic, a Dubai government-level business attestation platform handling official document verification workflows for UAE-based companies, built to enterprise specification.</li>
+            <li>Owned architecture decisions, code reviews, security assessments, and cross-device (iOS/Android) compatibility testing. Stack: React Native, Redux, TypeScript, REST APIs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Jan 2019 — Jul 2020</div>
+      <div>
+        <div class="job-title">Web Developer</div>
+        <div class="job-org">Technyx Systems · Part-time</div>
+        <div class="job-desc">
+          <ul>
+            <li>Built custom backend systems — RESTful APIs, database architecture, stored procedures, admin dashboards, and reporting tools — using PHP Laravel, MySQL, and JavaScript.</li>
+            <li>Integrated third-party APIs including social media platforms and payment gateways; progressed to handling production client projects independently.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Apr 2018 — Dec 2018</div>
+      <div>
+        <div class="job-title">Junior Web Developer</div>
+        <div class="job-org">Technyx Systems · Part-time</div>
+        <div class="job-desc">
+          <ul>
+            <li>Delivered client websites from concept through deployment — site architecture, wireframes, frontend development, and WordPress theme customization.</li>
+            <li>Established reusable component libraries that reduced development time on subsequent projects.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Jan 2018 — Mar 2018</div>
+      <div>
+        <div class="job-title">Intern</div>
+        <div class="job-org">Technyx Systems · Part-time</div>
+        <div class="job-desc">
+          <ul>
+            <li>Built a full CRUD application with core PHP and developed WordPress sites and themes — first professional exposure to production codebase standards and client delivery.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Skills</span>
+      <h2 class="section-title">What I bring to a team</h2>
+    </div>
+    <div class="skills-cols">
+      <div>
+        <h3>Top Skills</h3>
+        <div class="pill-group">
+          <span class="pill accent">React Native</span>
+          <span class="pill accent">Next.js</span>
+          <span class="pill accent">TypeScript</span>
+          <span class="pill accent">React.js</span>
+          <span class="pill accent">Three.js</span>
+        </div>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <div class="pill-group">
+          <span class="pill">Mobile Application Development</span>
+          <span class="pill">Web Development</span>
+          <span class="pill">Custom Software Development</span>
+        </div>
+      </div>
+    </div>
+    <div class="stack-line" style="border-top:1px dashed var(--line);margin-top:30px;">
+      <b>Also —</b> WebGL · PixiJS · Node.js · Laravel · MySQL · Docker · AWS · Azure · Redux · REST APIs · WordPress
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Education</span>
+      <h2 class="section-title">Academic background</h2>
+    </div>
+    <div class="edu-card">
+      <div class="edu-title">Sir Syed University of Engineering &amp; Technology (SSUET)</div>
+      <div class="edu-sub">Bachelor of Engineering, Computer Engineering</div>
+      <div class="edu-date">2016 — 2020</div>
+      <div class="edu-desc">
+        Built a foundation in software development, system design, and programming — including OOP (inheritance, polymorphism, encapsulation) and core data structures (arrays, linked lists, trees). Strengthened problem-solving through team projects and coding competitions.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2 class="section-title">Let's work together</h2>
+      <p>Open to Senior Frontend, React Native, or Full-Stack roles at product companies in Berlin or Hamburg — reach out directly or connect on LinkedIn.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:amanbashir601@gmail.com">amanbashir601@gmail.com</a>
+        <a class="btn btn-secondary" href="https://www.linkedin.com/in/bashiraman/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Aman Bashir. Built with care.
+  </div>
+</footer>
+
+</body>
+</html>
